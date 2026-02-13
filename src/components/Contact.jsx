@@ -1,13 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useContent } from '../data/ContentContext';
 
 const Contact = () => {
+    const { content } = useContent();
+    const { socialLinks, resumeUrl } = content;
+
     const opportunities = [
         "Product Manager Intern Roles",
         "APM Programs",
         "SaaS & Startup Collaborations",
         "Product Strategy Projects"
     ];
+
+    const getSocialIcon = (platform) => {
+        const p = platform.toLowerCase();
+        if (p.includes('linkedin')) return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>;
+        if (p.includes('github')) return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>;
+        if (p.includes('twitter') || p.includes('x')) return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" /></svg>;
+        if (p.includes('insta')) return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>;
+        return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /></svg>;
+    };
 
     return (
         <section id="contact" className="contact-section">
@@ -48,43 +61,24 @@ const Contact = () => {
                                 </div>
                             </motion.a>
 
-                            <motion.a
-                                href="https://linkedin.com/in/indreshsenthilkumar"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="contact-link-item"
-                                whileHover={{ x: 10, color: "var(--poster-brown)" }}
-                            >
-                                <div className="contact-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                        <rect x="2" y="9" width="4" height="12" />
-                                        <circle cx="4" cy="4" r="2" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="link-label">LinkedIn</p>
-                                    <p className="link-value">linkedin.com/in/indreshsenthilkumar</p>
-                                </div>
-                            </motion.a>
-
-                            <motion.a
-                                href="#"
-                                className="contact-link-item"
-                                whileHover={{ x: 10, color: "var(--poster-brown)" }}
-                            >
-                                <div className="contact-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <circle cx="12" cy="12" r="10" />
-                                        <line x1="2" y1="12" x2="22" y2="12" />
-                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p className="link-label">Portfolio</p>
-                                    <p className="link-value">yourdomain.com</p>
-                                </div>
-                            </motion.a>
+                            {socialLinks.map((link, idx) => (
+                                <motion.a
+                                    key={idx}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="contact-link-item"
+                                    whileHover={{ x: 10, color: "var(--poster-brown)" }}
+                                >
+                                    <div className="contact-icon">
+                                        {getSocialIcon(link.platform)}
+                                    </div>
+                                    <div>
+                                        <p className="link-label">{link.platform}</p>
+                                        <p className="link-value">{link.url.replace(/^https?:\/\/(www\.)?/, '')}</p>
+                                    </div>
+                                </motion.a>
+                            ))}
                         </div>
 
                         <div className="opportunities-box">
@@ -160,7 +154,9 @@ const Contact = () => {
                                 Get a detailed view of my professional journey, academic background, and technical expertise in a single PDF.
                             </p>
                             <motion.a
-                                href="#"
+                                href={resumeUrl}
+                                target="_blank"
+                                rel="noreferrer"
                                 className="download-footer-btn"
                                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }}
                                 whileTap={{ scale: 0.95 }}
@@ -182,25 +178,21 @@ const Contact = () => {
                             <div className="info-main">
                                 <div className="footer-logo">INDRESH S.</div>
                                 <div className="info-contact-group">
-                                    <p className="info-link">1 (844) 740-2144 | toll-free</p>
                                     <p className="info-link">indreshsenthilkumar@gmail.com</p>
                                 </div>
                                 <div className="info-socials">
-                                    <div className="social-circle">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
-                                    </div>
-                                    <div className="social-circle">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg>
-                                    </div>
-                                    <div className="social-circle">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" /></svg>
-                                    </div>
-                                    <div className="social-circle">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.49-6.05 6.33-12.67 8.21m9.7 7.71c-2.43-3.05-3.32-4.14-11.23-5.02" /></svg>
-                                    </div>
-                                    <div className="social-circle">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
-                                    </div>
+                                    {socialLinks.map((link, idx) => (
+                                        <motion.a
+                                            key={idx}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="social-circle"
+                                            whileHover={{ scale: 1.2, backgroundColor: "var(--poster-brown)", color: "#fff" }}
+                                        >
+                                            {getSocialIcon(link.platform)}
+                                        </motion.a>
+                                    ))}
                                 </div>
                             </div>
 
@@ -212,7 +204,7 @@ const Contact = () => {
                                 </div>
                                 <div className="link-col">
                                     <a href="#experience">Careers</a>
-                                    <a href="#education">Blog</a>
+                                    <a href="#education">Education</a>
                                     <a href="#">Privacy Policy</a>
                                 </div>
                             </div>

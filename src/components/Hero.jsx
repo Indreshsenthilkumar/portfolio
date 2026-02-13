@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useContent } from '../data/ContentContext';
+import heroImg from '../assets/hero.png';
 
-const words = [
-  "PRODUCT.",
-  "BUILDING.",
-  "INNOVATING.",
-  "SCALING.",
-  "EXECUTING."
-];
 
 const Hero = () => {
+  const { content } = useContent();
+  const { hero } = content;
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % words.length);
+      setIndex((prevIndex) => (prevIndex + 1) % hero.words.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [hero.words.length]);
 
   return (
     <div className="hero-section-wrapper">
@@ -25,26 +22,23 @@ const Hero = () => {
         {/* 1. Background Big Text (Dynamic Cycle) */}
         <AnimatePresence mode="wait">
           <motion.h1
-            key={words[index]}
+            key={hero.words[index]}
             className="poster-background-title"
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 1.05, y: 20 }}
             transition={{ duration: 0.8, ease: "circOut" }}
           >
-            {words[index]}
+            {hero.words[index]}
           </motion.h1>
         </AnimatePresence>
 
         {/* 2. Centered Subject */}
         <div className="poster-subject-wrapper">
           <img
-            src="/src/assets/hero.png"
+            src={heroImg}
             alt="Indresh Senthilkumar"
             className="poster-subject-img"
-            onError={(e) => {
-              e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop";
-            }}
           />
         </div>
 
@@ -61,9 +55,9 @@ const Hero = () => {
           <div className="header-meta">
             <div className="status-indicator">
               <span className="status-dot"></span>
-              AVAILABILITY: OPEN FOR ROLES
+              AVAILABILITY: {hero.availability}
             </div>
-            <p>BASED IN INDIA / GLOBAL REMOTE</p>
+            <p>{hero.location}</p>
           </div>
         </div>
 
@@ -71,22 +65,22 @@ const Hero = () => {
         <div className="corner-label label-top-right">
           <div className="religious-label">PRODUCT PORTFOLIO v2.0</div>
           <div className="header-meta">
-            <p>© 2026 INTERNAL ARCHIVE</p>
+            <p>© {new Date().getFullYear()} INTERNAL ARCHIVE</p>
             <p>AUTHORIZED ACCESS ONLY</p>
           </div>
         </div>
 
         {/* Bottom Left: Expertise Context */}
         <div className="corner-label label-bottom-left">
-          <div className="edu-title">Product Management | UX</div>
-          <div className="edu-subtitle">Full-Stack</div>
+          <div className="edu-title">{hero.role}</div>
+          <div className="edu-subtitle">{hero.subtitle}</div>
         </div>
 
         {/* Bottom Right: Branding & Coordinates */}
         <div className="corner-label label-bottom-right">
           <div className="name-primary">INDRESH</div>
           <div className="name-secondary">SENTHILKUMAR</div>
-          <div className="geo-coords">13.0827° N, 80.2707° E</div>
+          <div className="geo-coords">{hero.coordinates}</div>
         </div>
 
         {/* 4. Floating 'Active' Meta Tags (Scattered) */}
@@ -110,7 +104,7 @@ const Hero = () => {
 
         {/* Center Bottom: Mission Statement Marquee */}
         <div className="hero-mission-statement">
-          <p>BRIDGING THE GAP BETWEEN COMPLEX TECHNOLOGY AND INTUITIVE USER EXPERIENCES THROUGH DATA-DRIVEN PRODUCT STRATEGY.</p>
+          <p>{hero.mission}</p>
         </div>
       </div>
     </div>

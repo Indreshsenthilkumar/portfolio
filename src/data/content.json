@@ -1,0 +1,151 @@
+{
+    "hero": {
+        "words": [
+            "PRODUCT.",
+            "BUILDING.",
+            "INNOVATING.",
+            "SCALING.",
+            "EXECUTING."
+        ],
+        "role": "Product Management | UX",
+        "subtitle": "Full-Stack",
+        "mission": "BRIDGING THE GAP BETWEEN COMPLEX TECHNOLOGY AND INTUITIVE USER EXPERIENCES THROUGH DATA-DRIVEN PRODUCT STRATEGY.",
+        "availability": "OPEN FOR ROLES",
+        "location": "BASED IN INDIA / GLOBAL REMOTE",
+        "coordinates": "13.0827° N, 80.2707° E"
+    },
+    "about": {
+        "title": "About Me",
+        "name": "Indresh Senthilkumar",
+        "role": "Product-Minded Full-Stack Developer",
+        "text": "I am a B.Tech Information Technology student with hands-on exposure to <strong>Product Management</strong>, <strong>UI/UX Design</strong>, <strong>Customer Experience Strategy</strong>, and <strong>Full-Stack Development</strong>.",
+        "conclusion": "I focus on building user-first, scalable, performance-optimized digital solutions aligned with real-world business goals.",
+        "profileName": "Indresh",
+        "profileRole": "B.Tech IT Student",
+        "profileTags": [
+            "Product",
+            "UX",
+            "React"
+        ],
+        "profileStats": [
+            {
+                "value": "5+",
+                "label": "Focus Areas"
+            },
+            {
+                "value": "100%",
+                "label": "Impact"
+            }
+        ]
+    },
+    "projects": [
+        {
+            "id": 1,
+            "category": "PRODUCT MANAGEMENT",
+            "title": "Unified Campus Experience Platform",
+            "role": "Product Lead (Case Study)",
+            "problem": "Students waste 25–30 minutes daily navigating fragmented academic portals.",
+            "solution": "Designed a centralized dashboard integrating SSO, Unified Notifications, and a Central Task Timeline.",
+            "skills": [
+                "Problem Framing",
+                "MVP Prioritization",
+                "KPI Definition",
+                "UX Wireframing"
+            ],
+            "impact": "Goal: Reduce daily navigation time by 60–65%",
+            "link": "https://example.com/project1",
+            "github": ""
+        },
+        {
+            "id": 2,
+            "category": "SaaS OPTIMIZATION",
+            "title": "Experience Optimization (DesignSeries BIT)",
+            "role": "Product Strategist",
+            "problem": "Low user retention due to friction in end-to-end user journeys.",
+            "solution": "Refined end-to-end user journeys and platform usability through API-driven feature integration.",
+            "skills": [
+                "Product Analytics",
+                "UX Insights",
+                "Journey Mapping",
+                "Peformance Optimization"
+            ],
+            "impact": "Goal: Improve customer engagement and retention quality.",
+            "link": "https://example.com/project2",
+            "github": "https://github.com/indresh/project2"
+        },
+        {
+            "id": 3,
+            "category": "UI/UX RESEARCH",
+            "title": "Research & Prototyping (TechnoHacks)",
+            "role": "UX Researcher",
+            "problem": "User friction in existing interfaces leading to task inefficiency.",
+            "solution": "Conducted interviews & surveys to build high-fidelity wireframes based on UX heuristics.",
+            "skills": [
+                "User Discovery",
+                "Wireframing",
+                "Usability Testing",
+                "Accessibility"
+            ],
+            "impact": "Goal: Reduce friction and improve task efficiency.",
+            "link": "",
+            "github": ""
+        }
+    ],
+    "experience": [
+        {
+            "id": 1,
+            "company": "DesignSeries BIT",
+            "role": "Customer Experience & Full-Stack Contributor",
+            "period": "Present",
+            "points": [
+                "Optimized end-to-end user flows for premium digital products.",
+                "Contributed to scalable web applications using modern stacks.",
+                "Supported backend workflows to ensure seamless data integration.",
+                "Improved engagement using analytics-driven insights.",
+                "Collaborated with cross-functional teams to align product goals."
+            ],
+            "impact": "Strengthened digital product usability and platform performance."
+        },
+        {
+            "id": 2,
+            "company": "TechnoHacks EduTech",
+            "role": "UI/UX Designer Intern",
+            "period": "Previous",
+            "points": [
+                "Executed end-to-end UX lifecycle from discovery to prototyping.",
+                "Conducted usability testing to identify and resolve friction points.",
+                "Applied accessibility standards to ensure inclusive user experiences.",
+                "Iterated designs using feedback loops for continuous improvement."
+            ],
+            "impact": "Reduced cognitive load and improved user task efficiency."
+        }
+    ],
+    "education": [
+        {
+            "id": 1,
+            "degree": "B.Tech – Information Technology",
+            "institution": "Bannari Amman Institute of Technology",
+            "duration": "2024 – 2028",
+            "focusAreas": [
+                "Software Engineering",
+                "Product Systems Thinking",
+                "Human-Computer Interaction"
+            ]
+        }
+    ],
+    "resumeUrl": "#",
+    "socialLinks": [
+        {
+            "platform": "LinkedIn",
+            "url": "https://linkedin.com/in/indreshsenthilkumar"
+        },
+        {
+            "platform": "GitHub",
+            "url": "https://github.com/indresh"
+        },
+        {
+            "platform": "Instagram",
+            "url": "https://instagram.com/indresh"
+        }
+    ]
+}
